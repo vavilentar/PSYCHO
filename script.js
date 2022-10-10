@@ -66,7 +66,7 @@ document.querySelector('.answers-btn').addEventListener('click', (e) => {
 	Результат СП - ( <span>${СП(finalRes)}</span> )<br>
 	Результат СВ - ( <span>${СВ(finalRes)}</span> )
 	`
-	document.body.appendChild(testResults)
+	document.querySelector('.sec-info-block').appendChild(testResults)
 })
 
 function СВ(a) {

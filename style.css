@@ -6,7 +6,7 @@ body{
 	margin: 0 auto;
 	width: 1200px;
 	padding: 10px;
-	justify-content: center;
+	justify-content: flex-start;
 	column-gap: 20px;
 }
 table{
@@ -34,10 +34,10 @@ span {
 	font-size: 20px;
 }
 
-.answers-input{
+.answers-input, .answers-input-2{
 	height: 24px;
 }
-.answers-btn{
+.answers-btn, .answers-btn-2{
 	padding: 2px;
 	height: 30px;
 }
