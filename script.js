@@ -27,19 +27,19 @@ function checkResults(answers) {
 		switch (answers[i]) {
 			case 'Да':
 				if (tableItems.item(i).children[0].innerHTML != '') {
-					tableItems.item(i).children[0].style = "background: green"
+					tableItems.item(i).children[0].style = "background: #51e145"
 					finalRes.push(1)
 				} else {
-					tableItems.item(i).children[0].style = "background: red"
+					tableItems.item(i).children[0].style = "background: #e14551"
 					finalRes.push(-1)
 				}
 				break;
 			case 'Нет':
 				if (tableItems.item(i).children[2].innerHTML != '') {
-					tableItems.item(i).children[2].style = "background: green"
+					tableItems.item(i).children[2].style = "background: #51e145"
 					finalRes.push(1)
 				} else {
-					tableItems.item(i).children[2].style = "background: red"
+					tableItems.item(i).children[2].style = "background: #e14551"
 					finalRes.push(-1)
 				}
 				break;
@@ -50,7 +50,7 @@ function checkResults(answers) {
 	console.log(finalRes)
 	for (let i = 0; i < finalRes.length; i++) {
 		let resP = document.createElement('p');
-		resP.innerHTML = `Вопрос ${i+1} = <span>${finalRes[i]}</span>`
+		resP.innerHTML = `Вопрос ${i+1} = ( <span>${finalRes[i]}</span> )`
 		resBlock.appendChild(resP)
 	}
 }

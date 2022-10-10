@@ -1,10 +1,13 @@
+@import url(https://fonts.googleapis.com/css?family=Ubuntu:regular);
 body{
+	font-family: Ubuntu;
+	font-weight: 400;
 	display: flex;
 	margin: 0 auto;
 	width: 1200px;
 	padding: 10px;
 	justify-content: center;
-	align-items: flex-start;
+	column-gap: 20px;
 }
 table{
 	width: 20%;
@@ -29,4 +32,17 @@ table th {
 
 span {
 	font-size: 20px;
+}
+
+.answers-input{
+	height: 24px;
+}
+.answers-btn{
+	padding: 2px;
+	height: 30px;
+}
+
+form {
+	display: flex;
+	align-items: center;
 }
