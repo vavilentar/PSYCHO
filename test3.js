@@ -31,6 +31,7 @@ document.querySelector('.answers-btn-2').addEventListener('click', () => {
 	let item = document.createElement('p');
 	let result = pro/notPro;
 	item.innerHTML = `
+	<h2>Результаты третьего метода</h2>
 	Совпадения с Проф - ( <span>${pro}</span> )<br>
 	Совпадения с НеПроф - ( <span>${notPro}</span> )<br>
 	Коэффициент - ( <span>${result.toFixed(2)}</span> )`;
