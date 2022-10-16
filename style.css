@@ -50,14 +50,8 @@ form {
 	align-items: center;
 }
 
-<<<<<<< HEAD
 .sec-info-block {
 	display: flex;
 	flex-direction: column;
 	row-gap: 25px;
-=======
-.r-block {
-	font-size: 14px;
-	text-align: center;
->>>>>>> 519255a15f5becaaab6b48534c8359c7b15de097
 }
