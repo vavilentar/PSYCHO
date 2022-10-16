@@ -36,3 +36,4 @@ document.querySelector('.answers-btn-2').addEventListener('click', () => {
 	Коэффициент - ( <span>${result.toFixed(2)}</span> )`;
 	document.querySelector('.sec-info-block').appendChild(item)
 })
+
