@@ -55,3 +55,11 @@ form {
 	flex-direction: column;
 	row-gap: 25px;
 }
+
+.question {
+	text-align: left;
+}
+
+.second-table{
+	width: 70%;
+}
