@@ -165,32 +165,16 @@ const items = [
 	'Глупо осуждать людей, которые стремятся взять от жизни все, что могут.',
 	'Мне безразлично, что обо мне думают другие.',
 ]
-const answers =
-	'Да	Нет	Нет	Да	Нет	Да	Да	Нет	Нет	Нет	Да	Нет	Да	Нет	Да	Да	Да	Нет	Нет	Да	Нет	Нет	Нет	Да	Да	Да	Да	Да	Да	Да	Да	Да	Да	Нет	Да	Нет	Нет	Нет	Нет	Да	Да	Нет	Нет	Нет	Да	Да	Нет	Да	Нет	Нет	Да	Нет	Нет	Да	Нет	Нет	Да	Нет	Нет	Нет	Да	Нет	Да	Да	Да	Да	Да	Да	Да	Нет	Нет	Нет	Да	Да	Нет	Нет	Нет	Да	Да	Да	Да	Нет	Нет	Нет	Нет	Нет	Нет	Да	Да	Нет	Нет	Да	Нет	Нет	Нет	Нет	Да	Нет	Да	Нет	Да	Нет	Нет	Да	Да	Нет	Да	Да	Нет	Нет	Нет	Да	Да	Нет	Нет	Да	Да	Да	Нет	Да	Нет	Нет	Нет	Да	Нет	Да	Нет	Да	Да	Да	Нет	Нет	Нет	Нет	Нет	Да	Да	Да	Да	Нет	Да	Да	Да	Нет	Нет	Нет	Нет	Да	Нет	Да	Нет	Да	Нет	Нет	Нет	Нет	Да	Нет	Да	Да	Да	Нет	Да	Нет'.replace(/\t/g, ' ').split(' ');
-
-let firstArr = []
-let secondArr = []
 let yesSumm = 0;
 let noSumm = 0;
 
 
 document.querySelector('.answers-btn-6').addEventListener('click', () => {
-	let inputAnswers = document.querySelector('.answers-input-6').value.replace(/\t/g, ' ').split(' ');
+	let inputAnswers = document.querySelector('.answers-input-6').value.replace(/\t/g, ' ').split(' ')
+	inputAnswers.splice(-14,0,'Нет')
 
 	for (let i = 0; i < inputAnswers.length; i++) {
-		if (i < 150) {
-			firstArr.push(inputAnswers[i])
-		} else {
-			secondArr.push(inputAnswers[i])
-		}
-	}
-
-	firstArr.push('Нет');
-	let result = firstArr.concat(secondArr)
-
-
-	for (let i = 0; i < result.length; i++) {
-		if (result[i] == 'Да') {
+		if (inputAnswers[i] == 'Да') {
 			yesSumm++
 		} else {
 			noSumm++
@@ -202,11 +186,11 @@ document.querySelector('.answers-btn-6').addEventListener('click', () => {
 
 	for (let i = 0; i < items.length; i++) {
 		let item = document.createElement('tr');
-		item.className = 'table-item'
+		item.className = 'second-table_item'
 		item.innerHTML = `
 	<td class="question">${i+1}</td>
 	<td class="question">${items[i]}</td>
-	<td class="answer">${result[i]}</td>
+	<td class="answer">${inputAnswers[i]}</td>
 	`
 		table.appendChild(item)
 	}
