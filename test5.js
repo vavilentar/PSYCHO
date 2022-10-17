@@ -165,44 +165,58 @@ const items = [
 	'Глупо осуждать людей, которые стремятся взять от жизни все, что могут.',
 	'Мне безразлично, что обо мне думают другие.',
 ]
-const answers = 
-	'Да	Нет	Нет	Да	Нет	Да	Да	Нет	Нет	Нет	Да	Нет	Да	Нет	Да	Да	Да	Нет	Нет	Да	Нет	Нет	Нет	Да	Да	Да	Да	Да	Да	Да	Да	Да	Да	Нет	Да	Нет	Нет	Нет	Нет	Да	Да	Нет	Нет	Нет	Да	Да	Нет	Да	Нет	Нет	Да	Нет	Нет	Да	Нет	Нет	Да	Нет	Нет	Нет	Да	Нет	Да	Да	Да	Да	Да	Да	Да	Нет	Нет	Нет	Да	Да	Нет	Нет	Нет	Да	Да	Да	Да	Нет	Нет	Нет	Нет	Нет	Нет	Да	Да	Нет	Нет	Да	Нет	Нет	Нет	Нет	Да	Нет	Да	Нет	Да	Нет	Нет	Да	Да	Нет	Да	Да	Нет	Нет	Нет	Да	Да	Нет	Нет	Да	Да	Да	Нет	Да	Нет	Нет	Нет	Да	Нет	Да	Нет	Да	Да	Да	Нет	Нет	Нет	Нет	Нет	Да	Да	Да	Да	Нет	Да	Да	Да	Нет	Нет	Нет	Нет	Да	Нет	Да	Нет	Да	Нет	Нет	Нет	Нет	Да	Нет	Да	Да	Да	Нет	Да	Нет'.replace(/\t/g,' ').split(' ');
+const answers =
+	'Да	Нет	Нет	Да	Нет	Да	Да	Нет	Нет	Нет	Да	Нет	Да	Нет	Да	Да	Да	Нет	Нет	Да	Нет	Нет	Нет	Да	Да	Да	Да	Да	Да	Да	Да	Да	Да	Нет	Да	Нет	Нет	Нет	Нет	Да	Да	Нет	Нет	Нет	Да	Да	Нет	Да	Нет	Нет	Да	Нет	Нет	Да	Нет	Нет	Да	Нет	Нет	Нет	Да	Нет	Да	Да	Да	Да	Да	Да	Да	Нет	Нет	Нет	Да	Да	Нет	Нет	Нет	Да	Да	Да	Да	Нет	Нет	Нет	Нет	Нет	Нет	Да	Да	Нет	Нет	Да	Нет	Нет	Нет	Нет	Да	Нет	Да	Нет	Да	Нет	Нет	Да	Да	Нет	Да	Да	Нет	Нет	Нет	Да	Да	Нет	Нет	Да	Да	Да	Нет	Да	Нет	Нет	Нет	Да	Нет	Да	Нет	Да	Да	Да	Нет	Нет	Нет	Нет	Нет	Да	Да	Да	Да	Нет	Да	Да	Да	Нет	Нет	Нет	Нет	Да	Нет	Да	Нет	Да	Нет	Нет	Нет	Нет	Да	Нет	Да	Да	Да	Нет	Да	Нет'.replace(/\t/g, ' ').split(' ');
 
 let firstArr = []
 let secondArr = []
 let yesSumm = 0;
 let noSumm = 0;
 
-for (let i = 0; i < answers.length; i++) {
-	if (i < 150) {
-		firstArr.push(answers[i])
-	} else {
-		secondArr.push(answers[i])
+
+document.querySelector('.answers-btn-6').addEventListener('click', () => {
+	let inputAnswers = document.querySelector('.answers-input-6').value.replace(/\t/g, ' ').split(' ');
+
+	for (let i = 0; i < inputAnswers.length; i++) {
+		if (i < 150) {
+			firstArr.push(inputAnswers[i])
+		} else {
+			secondArr.push(inputAnswers[i])
+		}
 	}
-}
 
-firstArr.push('Нет');
-let result = firstArr.concat(secondArr)
+	firstArr.push('Нет');
+	let result = firstArr.concat(secondArr)
 
 
-for (let i = 0; i < result.length; i++) {
-	if(result[i] == 'Да') {
-		yesSumm++
-	} else {
-		noSumm++
+	for (let i = 0; i < result.length; i++) {
+		if (result[i] == 'Да') {
+			yesSumm++
+		} else {
+			noSumm++
+		}
 	}
-}
 
 
-const table = document.querySelector('.main-table');
+	const table = document.querySelector('.main-table');
 
-for (let i = 0; i < items.length; i++) {
-	let item = document.createElement('tr');
-	item.className = 'table-item'
-	item.innerHTML = `
+	for (let i = 0; i < items.length; i++) {
+		let item = document.createElement('tr');
+		item.className = 'table-item'
+		item.innerHTML = `
 	<td class="question">${i+1}</td>
 	<td class="question">${items[i]}</td>
 	<td class="answer">${result[i]}</td>
 	`
-	table.appendChild(item)
-}
+		table.appendChild(item)
+	}
+
+	let summInfo = document.createElement('div')
+	summInfo.className = 'summary'
+	summInfo.innerHTML = `
+	<p>Положительные ответы - <span>${yesSumm}</span></p><br/>
+	<p>Отрицательные ответы - <span>${noSumm}</span></p>
+	`
+	document.querySelector('.actions').appendChild(summInfo)
+
+})
