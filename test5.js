@@ -167,10 +167,24 @@ const items = [
 ]
 let yesSumm = 0;
 let noSumm = 0;
+let NpuYesKey = 0;
+
+let inputAnswers;
+let answersCells;
+
+const NPU1K = [4, 6, 7, 8, 11, 12, 15, 16, 17, 18, 20, 21, 28, 29, 30, 37, 39, 40, 41, 47, 57, 60, 63, 65, 67, 68, 70, 71, 73, 75, 80, 82, 83, 84, 86, 89, 94, 95, 96, 98, 102, 103, 108, 109, 110, 111, 112, 113, 115, 117, 118, 119, 120, 122, 123, 124, 129, 131, 135, 136, 137, 139, 143, 146, 149, 153, 154, 155, 156, 157, 158, 161, 162]
+const NPU0K = [2, 3, 5, 23, 25, 32, 38, 44, 45, 49, 52, 53, 54, 55, 58, 62, 66, 87, 105, 127, 132, 134, 140]
+
+const KO1K = [9, 24, 27, 33, 46, 61, 64, 81, 88, 90, 99, 104, 106, 114, 121, 126, 133, 142, 151, 152]
+const KO0K = [26, 34, 35, 48, 74, 85, 107, 130, 144, 147, 159]
+
+const MN1K = [14, 22, 36, 42, 50, 56, 59, 72, 77, 79, 91, 93, 125, 141, 145, 150, 164, 165]
+const MN0K = [13, 76, 97, 100, 160, 163]
+
 
 
 document.querySelector('.answers-btn-6').addEventListener('click', () => {
-	let inputAnswers = document.querySelector('.answers-input-6').value.replace(/\t/g, ' ').split(' ')
+	inputAnswers = document.querySelector('.answers-input-6').value.replace(/\t/g, ' ').split(' ')
 	inputAnswers.splice(-14,0,'Нет')
 
 	for (let i = 0; i < inputAnswers.length; i++) {
@@ -188,7 +202,7 @@ document.querySelector('.answers-btn-6').addEventListener('click', () => {
 		let item = document.createElement('tr');
 		item.className = 'second-table_item'
 		item.innerHTML = `
-	<td class="question">${i+1}</td>
+	<td class="number">${i+1}</td>
 	<td class="question">${items[i]}</td>
 	<td class="answer">${inputAnswers[i]}</td>
 	`
@@ -203,4 +217,17 @@ document.querySelector('.answers-btn-6').addEventListener('click', () => {
 	`
 	document.querySelector('.actions').appendChild(summInfo)
 
+	answersCells = document.querySelectorAll('.answer');
+})
+
+document.querySelector('.answers-btn-7').addEventListener('click', (e) => {
+	//answersCells[NPU1K[0]].innerHTML
+	for (let i = 0; i < NPU1K.length; i++) {
+		for (let k = NPU1K[i]-1; k < answersCells.length; k++) {
+			if (answersCells[k].innerHTML == 'Да') {
+				NpuYesKey++
+			}
+		}
+	}
+	console.log(NpuYesKey)
 })
