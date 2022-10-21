@@ -167,34 +167,29 @@ const items = [
 ]
 let yesSumm = 0;
 let noSumm = 0;
-let NpuYesKey = 0;
 
 let inputAnswers;
 let answersCells;
 
 const NPU1K = [4, 6, 7, 8, 11, 12, 15, 16, 17, 18, 20, 21, 28, 29, 30, 37, 39, 40, 41, 47, 57, 60, 63, 65, 67, 68, 70, 71, 73, 75, 80, 82, 83, 84, 86, 89, 94, 95, 96, 98, 102, 103, 108, 109, 110, 111, 112, 113, 115, 117, 118, 119, 120, 122, 123, 124, 129, 131, 135, 136, 137, 139, 143, 146, 149, 153, 154, 155, 156, 157, 158, 161, 162]
 const NPU0K = [2, 3, 5, 23, 25, 32, 38, 44, 45, 49, 52, 53, 54, 55, 58, 62, 66, 87, 105, 127, 132, 134, 140]
+let NpuYesKey = 0;
+let NpuNoKey = 0;
 
 const KO1K = [9, 24, 27, 33, 46, 61, 64, 81, 88, 90, 99, 104, 106, 114, 121, 126, 133, 142, 151, 152]
 const KO0K = [26, 34, 35, 48, 74, 85, 107, 130, 144, 147, 159]
+let KoYesKey = 0;
+let KoNoKey = 0;
 
 const MN1K = [14, 22, 36, 42, 50, 56, 59, 72, 77, 79, 91, 93, 125, 141, 145, 150, 164, 165]
 const MN0K = [13, 76, 97, 100, 160, 163]
-
+let MNYesKey = 0;
+let MNNoKey = 0;
 
 
 document.querySelector('.answers-btn-6').addEventListener('click', () => {
 	inputAnswers = document.querySelector('.answers-input-6').value.replace(/\t/g, ' ').split(' ')
-	inputAnswers.splice(-14,0,'Нет')
-
-	for (let i = 0; i < inputAnswers.length; i++) {
-		if (inputAnswers[i] == 'Да') {
-			yesSumm++
-		} else {
-			noSumm++
-		}
-	}
-
+	inputAnswers.splice(-14, 0, 'Нет')
 
 	const table = document.querySelector('.main-table');
 
@@ -208,26 +203,109 @@ document.querySelector('.answers-btn-6').addEventListener('click', () => {
 	`
 		table.appendChild(item)
 	}
-
-	let summInfo = document.createElement('div')
-	summInfo.className = 'summary'
-	summInfo.innerHTML = `
-	<p>Положительные ответы - <span>${yesSumm}</span></p><br/>
-	<p>Отрицательные ответы - <span>${noSumm}</span></p>
-	`
-	document.querySelector('.actions').appendChild(summInfo)
-
 	answersCells = document.querySelectorAll('.answer');
 })
 
 document.querySelector('.answers-btn-7').addEventListener('click', (e) => {
-	//answersCells[NPU1K[0]].innerHTML
 	for (let i = 0; i < NPU1K.length; i++) {
-		for (let k = NPU1K[i]-1; k < answersCells.length; k++) {
-			if (answersCells[k].innerHTML == 'Да') {
-				NpuYesKey++
-			}
-		}
+		checkNPUYes(NPU1K[i])
 	}
-	console.log(NpuYesKey)
+	for (let i = 0; i < NPU0K.length; i++) {
+		checkNPUNo(NPU0K[i])
+	}
+	
+	let NPUInfo = document.createElement('div')
+	NPUInfo.className = 'NPU-info'
+	NPUInfo.innerHTML = `
+	<h2>Результаты НПУ</h2>
+	<p>Сумма <span>НПУ</span> - <span>${NpuYesKey + NpuNoKey}</span></p>
+	`
+	document.querySelector('.actions').appendChild(NPUInfo)
+
+})
+
+	function checkNPUYes(index) {
+		if(answersCells[index-1].innerHTML == 'Да') {
+			NpuYesKey++
+		}
+		return NpuYesKey;
+	}
+	function checkNPUNo(index) {
+		if(answersCells[index-1].innerHTML == 'Нет') {
+			NpuNoKey++
+		}
+		return NpuNoKey;
+	}
+
+
+document.querySelector('.answers-btn-8').addEventListener('click', () => {
+	for (let i = 0; i < KO1K.length; i++) {
+		checkKOYes(KO1K[i])
+	}
+	for (let i = 0; i < KO0K.length; i++) {
+		checkKONo(KO0K[i])
+	}
+	
+	let KOInfo = document.createElement('div')
+	KOInfo.className = 'Ko-info'
+	KOInfo.innerHTML = `
+	<h2>Результаты КО</h2>
+	<p>Сумма <span>КО</span> - <span>${KoYesKey + KoNoKey}</span></p>
+	`
+	document.querySelector('.actions').appendChild(KOInfo)
+
+})
+
+function checkKOYes(index) {
+	if(answersCells[index-1].innerHTML == 'Да') {
+		KoYesKey++
+	}
+	return KoYesKey;
+}
+function checkKONo(index) {
+	if(answersCells[index-1].innerHTML == 'Нет') {
+		KoNoKey++
+	}
+	return KoNoKey;
+}
+
+document.querySelector('.answers-btn-9').addEventListener('click', () => {
+	for (let i = 0; i < MN1K.length; i++) {
+		checkMNYes(MN1K[i])
+	}
+	for (let i = 0; i < MN0K.length; i++) {
+		checkMNNo(MN0K[i])
+	}
+	
+	let MNInfo = document.createElement('div')
+	MNInfo.className = 'MN-info'
+	MNInfo.innerHTML = `
+	<h2>Результаты МН</h2>
+	<p>Сумма <span>МН</span> - <span>${MNYesKey + MNNoKey}</span></p>
+	`
+	document.querySelector('.actions').appendChild(MNInfo)
+
+})
+
+function checkMNYes(index) {
+	if(answersCells[index-1].innerHTML == 'Да') {
+		MNYesKey++
+	}
+	return MNYesKey;
+}
+function checkMNNo(index) {
+	if(answersCells[index-1].innerHTML == 'Нет') {
+		MNNoKey++
+	}
+	return MNNoKey;
+}
+
+document.querySelector('.answers-btn-10').addEventListener('click', () => {
+	let summInfo = document.createElement('div')
+	summInfo.className = 'summ-info'
+	summInfo.innerHTML = `
+	<h2>Результаты АС</h2>
+	<p>Сумма <span>АС</span> - <span>${MNYesKey + MNNoKey + KoYesKey + KoNoKey + NpuYesKey + NpuNoKey}</span></p>
+	`
+	document.querySelector('.actions').appendChild(summInfo)
 })
