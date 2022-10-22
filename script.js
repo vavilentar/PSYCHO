@@ -56,12 +56,13 @@ function checkResults(answers) {
 }
 
 document.querySelector('.answers-btn').addEventListener('click', (e) => {
+	e.preventDefault()
 	let textAnswers = answersToArray(document.querySelector('.answers-input').value);
 	checkResults(textAnswers)
 
 	let testResults = document.createElement('div');
 	testResults.innerHTML = `
-	<h2>Результаты второго метода</h2>
+	<h3>Результаты второго метода</h3>
 	Результат СЦ - ( <span>${СЦ(finalRes)}</span> )<br>
 	Результат СС - ( <span>${СС(finalRes)}</span> )<br>
 	Результат СП - ( <span>${СП(finalRes)}</span> )<br>

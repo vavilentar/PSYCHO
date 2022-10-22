@@ -24,14 +24,15 @@ function compare(p, np, a) {
 	}
 }
 
-document.querySelector('.answers-btn-2').addEventListener('click', () => {
+document.querySelector('.answers-btn-2').addEventListener('click', (e) => {
+	e.preventDefault()
 	const answerInput = document.querySelector('.answers-input-2');
 	let arrAns = answerInput.value.split(', ')
 	compare(profList, nonProfList, arrAns)
 	let item = document.createElement('p');
 	let result = pro/notPro;
 	item.innerHTML = `
-	<h2>Результаты третьего метода</h2>
+	<h3>Результаты третьего метода</h3>
 	Совпадения с Проф - ( <span>${pro}</span> )<br>
 	Совпадения с НеПроф - ( <span>${notPro}</span> )<br>
 	Коэффициент - ( <span>${result.toFixed(2)}</span> )`;
