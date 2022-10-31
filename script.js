@@ -76,8 +76,8 @@ document.querySelector('.answers-btn').addEventListener('click', (e) => {
 	testResults.innerHTML = `
 	<h2>Результаты второго метода</h2>
 	Результат СПП - ( <span>${СПП(newResults)}</span> )<br>
-	Результат СТ - ( <span>${СТ(newResults)}</span> )<br>
 	Результат СФТ - ( <span>${СФТ(newResults)}</span> )<br>
+	Результат СТ - ( <span>${СТ(newResults)}</span> )<br>
 	Результат СВ - ( <span>${СВ(newResults)}</span> )<br>
 	Результат СП - ( <span>${СП(newResults)}</span> )<br>
 	Результат СС - ( <span>${СС(newResults)}</span> )<br>
@@ -118,7 +118,7 @@ function СП(a) {
 	return answer
 }
 
-function СТ(a) {
+function СФТ(a) {
 	// СТ=B8-B3-B5-B10-B25-B30-B38-B48-B53-B59-B65
 	// let answer = a[7]-a[2]-a[4]-a[9]-a[24]-a[29]-a[37]-a[47]-a[52]-a[58]-a[64]
 	let answer = a[8] - a[3] - a[5] - a[10] - a[25] - a[30] - a[38] - a[48] - a[53] - a[59] - a[65]
@@ -126,7 +126,7 @@ function СТ(a) {
 	return answer
 }
 
-function СФТ(a) {
+function СТ(a) {
 	// СТ=B11-B16-B20-B27-B31-B35-B42-B49-B55-B61
 	// let answer = a[10]-a[15]-a[19]-a[26]-a[30]-a[34]-a[41]-a[48]-a[54]-a[60]
 	let answer = a[11] - a[16] - a[20] - a[27] - a[31] - a[35] - a[42] - a[49] - a[55] - a[61]
