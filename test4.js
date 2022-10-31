@@ -27,7 +27,8 @@ function answersToArray(answers) {
 	return answersArray;
 }
 
-document.querySelector('.answers-btn-3').addEventListener('click', () => {
+document.querySelector('.answers-btn-3').addEventListener('click', (e) => {
+	e.preventDefault()
 	let input = document.querySelector('.answers-input-3');
 	let array = input.value
 	array = array.replace(/\t/g, ' ').split(' ');
@@ -54,7 +55,8 @@ document.querySelector('.answers-btn-3').addEventListener('click', () => {
 	}
 })
 
-document.querySelector('.answers-btn-4').addEventListener('click', () => {
+document.querySelector('.answers-btn-4').addEventListener('click', (e) => {
+	e.preventDefault()
 	let input = document.querySelector('.answers-input-4');
 	let array = input.value
 	array = array.replace(/\t/g, ' ').split(' ');
@@ -81,7 +83,8 @@ document.querySelector('.answers-btn-4').addEventListener('click', () => {
 	}
 })
 
-document.querySelector('.answers-btn-5').addEventListener('click', () => {
+document.querySelector('.answers-btn-5').addEventListener('click', (e) => {
+	e.preventDefault()
 	let input = document.querySelector('.answers-input-5');
 	let array = input.value
 	array = array.replace(/\t/g, ' ').split(' ');
@@ -108,8 +111,8 @@ document.querySelector('.answers-btn-5').addEventListener('click', () => {
 	}
 })
 
-document.querySelector('.summ').addEventListener('click', () => {
-
+document.querySelector('.summ').addEventListener('click', (e) => {
+	e.preventDefault()
 	let sumObj = {
 		'Р': activity[0] + abilities[0] + careers[0],
 		'И': activity[1] + abilities[1] + careers[1],

@@ -187,7 +187,8 @@ let MNYesKey = 0;
 let MNNoKey = 0;
 
 
-document.querySelector('.answers-btn-6').addEventListener('click', () => {
+document.querySelector('.answers-btn-6').addEventListener('click', (e) => {
+	e.preventDefault()
 	inputAnswers = document.querySelector('.answers-input-6').value.replace(/\t/g, ' ').split(' ')
 	inputAnswers.splice(-14, 0, 'Нет')
 
@@ -204,16 +205,14 @@ document.querySelector('.answers-btn-6').addEventListener('click', () => {
 		table.appendChild(item)
 	}
 	answersCells = document.querySelectorAll('.answer');
-})
 
-document.querySelector('.answers-btn-7').addEventListener('click', (e) => {
 	for (let i = 0; i < NPU1K.length; i++) {
 		checkNPUYes(NPU1K[i])
 	}
 	for (let i = 0; i < NPU0K.length; i++) {
 		checkNPUNo(NPU0K[i])
 	}
-	
+
 	let NPUInfo = document.createElement('div')
 	NPUInfo.className = 'NPU-info'
 	NPUInfo.innerHTML = `
@@ -222,30 +221,13 @@ document.querySelector('.answers-btn-7').addEventListener('click', (e) => {
 	`
 	document.querySelector('.actions').appendChild(NPUInfo)
 
-})
-
-	function checkNPUYes(index) {
-		if(answersCells[index-1].innerHTML == 'Да') {
-			NpuYesKey++
-		}
-		return NpuYesKey;
-	}
-	function checkNPUNo(index) {
-		if(answersCells[index-1].innerHTML == 'Нет') {
-			NpuNoKey++
-		}
-		return NpuNoKey;
-	}
-
-
-document.querySelector('.answers-btn-8').addEventListener('click', () => {
 	for (let i = 0; i < KO1K.length; i++) {
 		checkKOYes(KO1K[i])
 	}
 	for (let i = 0; i < KO0K.length; i++) {
 		checkKONo(KO0K[i])
 	}
-	
+
 	let KOInfo = document.createElement('div')
 	KOInfo.className = 'Ko-info'
 	KOInfo.innerHTML = `
@@ -254,29 +236,13 @@ document.querySelector('.answers-btn-8').addEventListener('click', () => {
 	`
 	document.querySelector('.actions').appendChild(KOInfo)
 
-})
-
-function checkKOYes(index) {
-	if(answersCells[index-1].innerHTML == 'Да') {
-		KoYesKey++
-	}
-	return KoYesKey;
-}
-function checkKONo(index) {
-	if(answersCells[index-1].innerHTML == 'Нет') {
-		KoNoKey++
-	}
-	return KoNoKey;
-}
-
-document.querySelector('.answers-btn-9').addEventListener('click', () => {
 	for (let i = 0; i < MN1K.length; i++) {
 		checkMNYes(MN1K[i])
 	}
 	for (let i = 0; i < MN0K.length; i++) {
 		checkMNNo(MN0K[i])
 	}
-	
+
 	let MNInfo = document.createElement('div')
 	MNInfo.className = 'MN-info'
 	MNInfo.innerHTML = `
@@ -285,22 +251,6 @@ document.querySelector('.answers-btn-9').addEventListener('click', () => {
 	`
 	document.querySelector('.actions').appendChild(MNInfo)
 
-})
-
-function checkMNYes(index) {
-	if(answersCells[index-1].innerHTML == 'Да') {
-		MNYesKey++
-	}
-	return MNYesKey;
-}
-function checkMNNo(index) {
-	if(answersCells[index-1].innerHTML == 'Нет') {
-		MNNoKey++
-	}
-	return MNNoKey;
-}
-
-document.querySelector('.answers-btn-10').addEventListener('click', () => {
 	let summInfo = document.createElement('div')
 	summInfo.className = 'summ-info'
 	summInfo.innerHTML = `
@@ -308,4 +258,47 @@ document.querySelector('.answers-btn-10').addEventListener('click', () => {
 	<p>Сумма <span>АС</span> - <span>${MNYesKey + MNNoKey + KoYesKey + KoNoKey + NpuYesKey + NpuNoKey}</span></p>
 	`
 	document.querySelector('.actions').appendChild(summInfo)
+
 })
+
+function checkNPUYes(index) {
+	if (answersCells[index - 1].innerHTML == 'Да') {
+		NpuYesKey++
+	}
+	return NpuYesKey;
+}
+
+function checkNPUNo(index) {
+	if (answersCells[index - 1].innerHTML == 'Нет') {
+		NpuNoKey++
+	}
+	return NpuNoKey;
+}
+
+function checkKOYes(index) {
+	if (answersCells[index - 1].innerHTML == 'Да') {
+		KoYesKey++
+	}
+	return KoYesKey;
+}
+
+function checkKONo(index) {
+	if (answersCells[index - 1].innerHTML == 'Нет') {
+		KoNoKey++
+	}
+	return KoNoKey;
+}
+
+function checkMNYes(index) {
+	if (answersCells[index - 1].innerHTML == 'Да') {
+		MNYesKey++
+	}
+	return MNYesKey;
+}
+
+function checkMNNo(index) {
+	if (answersCells[index - 1].innerHTML == 'Нет') {
+		MNNoKey++
+	}
+	return MNNoKey;
+}

@@ -68,11 +68,13 @@ function checkResults(answers) {
 }
 
 document.querySelector('.answers-btn').addEventListener('click', (e) => {
+	e.preventDefault()
 	let textAnswers = answersToArray(document.querySelector('.answers-input').value);
 	checkResults(textAnswers)
 
 	let testResults = document.createElement('div');
 	testResults.innerHTML = `
+<<<<<<< HEAD
 	<h2>Результаты второго метода</h2>
 	Результат СПП - ( <span>${СПП(newResults)}</span> )<br>
 	Результат СТ - ( <span>${СТ(newResults)}</span> )<br>
@@ -81,6 +83,13 @@ document.querySelector('.answers-btn').addEventListener('click', (e) => {
 	Результат СП - ( <span>${СП(newResults)}</span> )<br>
 	Результат СС - ( <span>${СС(newResults)}</span> )<br>
 	Результат СЦ - ( <span>${СЦ(newResults)}</span> )<br>
+=======
+	<h3>Результаты второго метода</h3>
+	Результат СЦ - ( <span>${СЦ(finalRes)}</span> )<br>
+	Результат СС - ( <span>${СС(finalRes)}</span> )<br>
+	Результат СП - ( <span>${СП(finalRes)}</span> )<br>
+	Результат СВ - ( <span>${СВ(finalRes)}</span> )
+>>>>>>> 7425f84e9c9c355ecc39b6571d883efc7d1ef4fa
 	`
 	document.querySelector('.sec-info-block').appendChild(testResults)
 })
